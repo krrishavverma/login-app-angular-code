@@ -1,0 +1,55 @@
+<!-- <a style="float: right;" routerLink="/">Log out</a> -->
+<div style="background-color: aliceblue; height: 100%; width: 100%;">
+  <div>
+    <nav class="navbar navbar-default" style="width:100%;
+    border: 1px solid #ccc; background-color: purple;">&nbsp;&nbsp;
+    <div class="container-fluid">
+      <div class="navbar-header"></div>
+      <h2 style="color: white;">All users details page (admin page)</h2>
+      <a style="float: right;" routerLink="/">Log out</a>
+    </div>
+    </nav>
+  </div>
+  <br>
+  <form id="form1">
+      <div class="divTable">
+        <div class="headRow">
+          <div class="divCell" style="background-color: aqua;">User Name</div>
+          <div class="divCell" style="background-color: aqua;">Name</div>
+          <div class="divCell" style="background-color: aqua;">Email</div>
+          <div class="divCell" style="background-color: aqua;">Gender</div>
+          <div class="divCell" style="background-color: aqua;">DOB</div>
+          <div class="divCell" style="background-color: aqua;">Phone</div>
+          <div class="divCell" style="background-color: aqua;">Address</div>
+          <div class="divCell" style="background-color: aqua;">Action</div>
+        </div>
+        <div class="divRow" *ngFor="let user of userDetails">
+          <div class="divCell">{{ user.username }}</div>
+          <div class="divCell">{{ user.firstname }} {{ user.lastname }}</div>
+          <div class="divCell">{{ user.email }}</div>
+          <div class="divCell">{{ user.gender }}</div>
+          <div class="divCell">{{ user.dateofbirth }}</div>
+          <div class="divCell">{{ user.phone }}</div>
+          <div class="divCell">{{ user.address }}</div>
+          <div class="divCell">&nbsp;&nbsp;<img src="../../assets/img/edit1.png" 
+            (click)="onEdit(user.username)">&nbsp;&nbsp;&nbsp;
+            <img src="../../assets/img/delete.png" 
+            (click)="onDelete(user.username)">
+          </div>
+    
+        </div>
+    </div>
+  </form><br>
+</div>
+<br><br><br><br><br><br><br>
+<div id="otherfooter">
+  <ul>
+    <small>English (UK)</small>&nbsp;
+    <a href="/about">About</a>
+  </ul>
+  <div>
+    <ul>
+      <small>User Management App © 2020</small>
+    </ul>
+  </div>
+</div>

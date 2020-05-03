@@ -1,0 +1,174 @@
+<div style="background-color: aliceblue; height: 100%; width: 100%;">
+  <div>
+    <nav class="navbar navbar-default" style="width:100%;
+    border: 1px solid #ccc; background-color: purple;">&nbsp;&nbsp;
+    <div class="container-fluid">
+      <div class="navbar-header"></div>
+      <h2 style="color: white;">User details page</h2>
+      <a style="float: right;" routerLink="/">Log out</a>
+    </div>
+    </nav>
+  </div>
+
+
+  <div style="top: 10%; left: 10%; position: relative;">
+    <div class="form-group"><br>
+      <label for="userName">User Name</label>&nbsp;<label style="color: red;">*</label>
+      <input
+        type="text"
+        style="width: 40%;"
+        id="username"
+        class="form-control"
+        disabled
+        [(ngModel)]="user.myusername">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>&nbsp;<label style="color: red;">*</label>&nbsp;
+      <img src="../../assets/img/edit1.png" (click)="changePassword()">
+      <input
+        [type]="show_password"
+        style="width: 40%;"
+        [disabled] = "password_disabled"
+        id="password"
+        class="form-control" required #password="ngModel" 
+        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" 
+        [class.is-invalid]="password.invalid && password.touched" name="password"
+        [(ngModel)]="user.mypassword">
+      <small [style]="passwordDisplay" >Use 8 or more characters with a mix of letters (both uppercase and lowercase), numbers & symbols</small>
+      <div *ngIf="password.errors && (password.invalid || password.touched)">
+        <small class="text-danger" *ngIf="password.errors.required && password.touched">password is required</small>
+        <small class="text-danger" *ngIf="password.errors.pattern">password strength is week</small>    
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name">First Name</label>&nbsp;<label style="color: red;">*</label>&nbsp;
+      <img src="../../assets/img/edit1.png" (click)="changeFirstName()">
+      <input
+        type="text"
+        style="width: 40%;"
+        [disabled] = "firstname_disabled"
+        id="firstname"
+        class="form-control" required #firstname="ngModel" 
+        [class.is-invalid]="firstname.invalid && firstname.touched" 
+        name="firstname" [(ngModel)]="user.myfirstname">
+      <small class="text-danger" [class.d-none]="firstname.valid || firstname.untouched">
+        firstname is required
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="name">Last Name</label>&nbsp;<label style="color: red;">*</label>&nbsp;
+      <img src="../../assets/img/edit1.png" (click)="changeLastName()">
+      <input
+        type="text"
+        style="width: 40%;"
+        [disabled] = "lastname_disabled"
+        id="lastname"
+        class="form-control" required #lastname="ngModel" 
+        [class.is-invalid]="lastname.invalid && lastname.touched" 
+        name="lastname" [(ngModel)]="user.mylastname">
+      <small class="text-danger" [class.d-none]="lastname.valid || lastname.untouched">
+        lastname is required
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>&nbsp;<label style="color: red;">*</label>&nbsp;
+      <img src="../../assets/img/edit1.png" (click)="changeEmail()">
+      <input
+        type="text"
+        style="width: 40%;"
+        [disabled] = "email_disabled"
+        id="email"
+        class="form-control" required #email="ngModel" 
+        pattern="^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+        [class.is-invalid]="email.invalid && email.touched" 
+        name="email" [(ngModel)]="user.myemail">
+      <div *ngIf="email.errors && (email.invalid || email.touched)">
+        <small class="text-danger" *ngIf="email.errors.required && email.touched">Email is required</small>
+        <small class="text-danger" *ngIf="email.errors.pattern">Email is invalid</small>      
+      </div>
+    </div>
+
+    <div class="form-group" [class.has-error]="gender.touched && gender.invalid">
+      <label>Gender</label>&nbsp;<label style="color: red;">*</label>
+      <img src="../../assets/img/edit1.png" (click)="changeGender()"><br>
+      <div>
+        <input type="radio" required #gender="ngModel" name="gender" 
+          [disabled] = "male_disabled" value="Male" [(ngModel)]="user.mygender">
+        <label class="radio-inline">Male</label>&nbsp;
+        <input type="radio" required  #gender="ngModel" name="gender" 
+          [disabled] = "female_disabled" value="Female" [(ngModel)]="user.mygender">
+        <label>Female</label>&nbsp;
+        <input type="radio" required  #gender="ngModel" name="gender" 
+          [disabled] = "other_disabled" value="Other" [(ngModel)]="user.mygender">
+        <label>Other</label>
+      </div>
+      <small class="text-danger" [class.d-none]="gender.valid || gender.untouched">
+        gender is required
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="dob">Date of birth</label>&nbsp;<label style="color: red;">*</label>&nbsp;
+      <img src="../../assets/img/edit1.png" (click)="changeDateOfBirth()">&nbsp;
+      <input type="date" max="{{ CurrentDate | date:'yyyy-MM-dd'}}" 
+        style="width: 40%;" class="form-control" required #dateofbirth="ngModel" 
+        [class.is-invalid]="dateofbirth.invalid && dateofbirth.touched" 
+        name="dateofbirth" [disabled] = "dateOfbirth_disabled" 
+        [(ngModel)]="user.mydateofbirth">
+      <small class="text-danger" [class.d-none]="dateofbirth.valid || dateofbirth.untouched">
+        Date of birth is required
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone</label>&nbsp;<label style="color: red;">*</label>&nbsp;
+      <img src="../../assets/img/edit1.png" (click)="changePhone()">
+      <input
+        type="text"
+        style="width: 40%;"
+        [disabled] = "phone_disabled"
+        id="phone"
+        class="form-control" required #phone="ngModel" 
+        pattern="^\d{10}$" [class.is-invalid]="phone.invalid && phone.touched" 
+        name="phone" [(ngModel)]="user.myphone">
+      <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+        <small class="text-danger" *ngIf="phone.errors.required && phone.touched">Phone number is required</small>
+        <small class="text-danger" *ngIf="phone.errors.pattern">Phone number must be 10 digits</small>      
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address</label>&nbsp;<label style="color: red;">*</label>&nbsp;
+      <img src="../../assets/img/edit1.png" (click)="changeAddress()">
+      <input
+        type="text"
+        style="width: 40%;"
+        [disabled] = "address_disabled"
+        id="address"
+        class="form-control" required #address="ngModel" 
+        [class.is-invalid]="address.invalid && address.touched" 
+        name="address" [(ngModel)]="user.myaddress">
+      <small class="text-danger" [class.d-none]="address.valid || address.untouched">
+        address is required
+      </small>
+    </div>
+    <button
+      class="btn btn-primary"
+      (click)="onUpdateDetail()">Update Detail
+    </button>&nbsp;
+    <button disabled class="btn btn-primary">delete</button>&nbsp;
+    <button class="btn btn-primary" (click)="onChangeAll()">change all</button>&nbsp;
+  </div><br>
+</div>
+<br>
+<div id="otherfooter">
+  <ul>
+    <small>English (UK)</small>&nbsp;
+    <a href="/about">About</a>
+  </ul>
+  <div>
+    <ul>
+      <small>User Management App © 2020</small>
+    </ul>
+  </div>
+</div>

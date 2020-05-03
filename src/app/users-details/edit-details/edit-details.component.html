@@ -1,0 +1,149 @@
+<div style="background-color: aliceblue; height: 100%; width: 100%;">
+  <div>
+    <nav class="navbar navbar-default" style="width:100%;
+    border: 1px solid #ccc; background-color:purple;">&nbsp;
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" routerLink="/users-details" 
+        routerLinkActive="active" 
+        [routerLinkActiveOptions]="{exact:true}">Admin Details</a>
+      </div>
+      <h2 style="color: white;">Edit users details page (admin page)</h2>
+      <a style="float: right;" routerLink="/">Log out</a>
+    </div>
+    </nav>
+  </div>
+
+  <div style="top: 10%; left: 10%; position: relative;">
+    <br>
+    
+    <div class="form-group">
+    <label for="userName">User Name</label>&nbsp;<label style="color: red;">*</label>
+    <input
+        type="text"
+        style="width: 40%;"
+        id="username"
+        class="form-control"
+        disabled
+        [(ngModel)]="user.myusername">
+    </div>
+    <div class="form-group">
+      <label for="firstname">First Name</label>&nbsp;<label style="color: red;">*</label>
+      <input
+        type="text"
+        style="width: 40%;"
+        id="firstname"
+        class="form-control" required #firstname="ngModel" 
+        [class.is-invalid]="firstname.invalid && firstname.touched" 
+        name="firstname"
+        [(ngModel)]="user.myfirstname">
+      <small class="text-danger" [class.d-none]="firstname.valid || firstname.untouched">
+        firstname is required
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Last Name</label>&nbsp;<label style="color: red;">*</label>
+      <input
+        type="text"
+        style="width: 40%;"
+        id="lastname"
+        class="form-control" required #lastname="ngModel" 
+        [class.is-invalid]="lastname.invalid && lastname.touched" 
+        name="lastname"
+        [(ngModel)]="user.mylastname">
+      <small class="text-danger" [class.d-none]="lastname.valid || lastname.untouched">
+        lastname is required
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>&nbsp;<label style="color: red;">*</label>
+      <input
+        type="text"
+        style="width: 40%;"
+        id="email"
+        class="form-control" required #email="ngModel" 
+        pattern="^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+        [class.is-invalid]="email.invalid && email.touched" 
+        name="email" [(ngModel)]="user.myemail">
+      <div *ngIf="email.errors && (email.invalid || email.touched)">
+        <small class="text-danger" *ngIf="email.errors.required && email.touched">Email is required</small>
+        <small class="text-danger" *ngIf="email.errors.pattern">Email is invalid</small>      
+      </div>
+    </div>
+
+    <div class="form-group" [class.has-error]="gender.touched && gender.invalid">
+      <label>Gender</label>&nbsp;<label style="color: red;">*</label>
+      <div>
+        <input type="radio" required #gender="ngModel" name="gender" 
+          value="Male" [(ngModel)]="user.mygender">
+        <label class="radio-inline">Male</label>&nbsp;
+        <input type="radio" required  #gender="ngModel" name="gender" 
+          value="Female" [(ngModel)]="user.mygender">
+        <label>Female</label>&nbsp;
+        <input type="radio" required  #gender="ngModel" name="gender" 
+          value="Other" [(ngModel)]="user.mygender">
+        <label>Other</label>
+      </div>
+      <small class="text-danger" [class.d-none]="gender.valid || gender.untouched">
+        gender is required
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="dob">Date of birth</label>&nbsp;<label style="color: red;">*</label>
+      <input type="date" max="{{ CurrentDate | date:'yyyy-MM-dd'}}" 
+        style="width: 40%;" class="form-control" required #dateofbirth="ngModel" 
+        [class.is-invalid]="dateofbirth.invalid && dateofbirth.touched" 
+        name="dateofbirth" [(ngModel)]="user.mydateofbirth">
+      <small class="text-danger" [class.d-none]="dateofbirth.valid || dateofbirth.untouched">
+        Date of birth is required
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone</label>&nbsp;<label style="color: red;">*</label>
+      <input
+        type="text"
+        style="width: 40%;"
+        id="phone"
+        class="form-control" required #phone="ngModel" 
+        pattern="^\d{10}$" [class.is-invalid]="phone.invalid && phone.touched" 
+        name="phone" [(ngModel)]="user.myphone">
+      <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+        <small class="text-danger" *ngIf="phone.errors.required && phone.touched">Phone number is required</small>
+        <small class="text-danger" *ngIf="phone.errors.pattern">Phone number must be 10 digits</small>      
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address</label>&nbsp;<label style="color: red;">*</label>
+      <input
+        type="text"
+        style="width: 40%;"
+        id="address"
+        class="form-control" required #address="ngModel" 
+        [class.is-invalid]="address.invalid && address.touched" 
+        name="address" [(ngModel)]="user.myaddress">
+      <small class="text-danger" [class.d-none]="address.valid || address.untouched">
+        address is required
+      </small>
+    </div>
+    <button
+      class="btn btn-primary"
+      (click)="onUpdateDetail()">Update Detail
+    </button>&nbsp;
+    <button class="btn btn-primary" (click)="onBack()">back</button>
+  </div><br>
+</div>
+<br>
+<div id="otherfooter">
+  <ul>
+    <small>English (UK)</small>&nbsp;
+    <a href="/about">About</a>
+  </ul>
+  <div>
+    <ul>
+      <small>User Management App © 2020</small>
+    </ul>
+  </div>
+</div>
