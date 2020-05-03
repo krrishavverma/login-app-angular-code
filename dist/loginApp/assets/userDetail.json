@@ -1,0 +1,61 @@
+{
+    "admin": [
+        {
+            "userName": "admin",
+            "password": "admin"
+        }
+    ],
+    "normal": [
+        {
+            "userName": "xyz",
+            "password": "xyz",
+            "name": "Aashi Kumari",
+            "email": "atul@gmail.com",
+            "gender": "Female",
+            "date_of_birth": "07/06/1998",
+            "phone": 8999933847,
+            "address": "Bihar"
+        },
+        {
+            "userName": "rishav",
+            "password": "kumar",
+            "name": "Rishav Kumar",
+            "email": "rishav@gmail.com",
+            "gender": "Male",
+            "date_of_birth": "07/06/1998",
+            "phone": 8512033847,
+            "address": "Noida"
+    
+        },
+        {
+            "userName": "qwerty",
+            "password": "qwerty",
+            "name": "Abhi Kumar",
+            "email": "abhi@gmail.com",
+            "gender": "Male",
+            "date_of_birth": "07/06/1998",
+            "phone": 9999933847,
+            "address": "Delhi"
+        },
+        {
+            "userName": "abcde",
+            "password": "abcde",
+            "name": "Mahi Kumar",
+            "email": "mahi@gmail.com",
+            "gender": "Male",
+            "date_of_birth": "07/06/1998",
+            "phone": 8512044444,
+            "address": "Agra"
+        },
+        {
+            "userName": "mnopq",
+            "password": "mnopq",
+            "name": "Aadi Kumar",
+            "email": "aadi@gmail.com",
+            "gender": "Male",
+            "date_of_birth": "07/06/1998",
+            "phone": 8512456547,
+            "address": "Noida"
+        }
+    ]
+}
